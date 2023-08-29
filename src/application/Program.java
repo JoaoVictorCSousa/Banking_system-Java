@@ -30,8 +30,18 @@ public class Program {
 		System.out.println("Inform a quantity to withdraw: ");
 		double amount = sc.nextDouble();
 		
-		acc.withDraw(amount);
-		System.out.printf("New Withdraw: %.2f" ,  acc.getBalance());
+		if(amount > acc.getWithDrawLimit()) {
+			System.out.println("Withdraw error: The quantity exceeds the withdraw limit!");
+		}
+		else if (amount > acc.getBalance()) {
+			System.out.println("Withdraw error: Insufficient balance");
+		}
+		else {
+			acc.withDraw(amount);
+			System.out.printf("New Withdraw: %.2f" ,  acc.getBalance());
+		}
+		
+		
 		
 		sc.close();
 		
